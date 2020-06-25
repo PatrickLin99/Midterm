@@ -12,6 +12,8 @@ import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.patrick.midterm.databinding.ActivityMainBinding
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         ViewModelProvider(this).get(MainViewModel::class.java)}
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var navController: NavController
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,57 +38,58 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+//        binding.lifecycleOwner = this
+//        binding.viewModel = viewModel
+//
+//        val adapter = MainAdapter()
+//        binding.recyclerPublisher.adapter = adapter
 
-        val adapter = MainAdapter()
-        binding.recyclerPublisher.adapter = adapter
-
-        viewModel.mutableLivedata.observe(this, androidx.lifecycle.Observer {
-            it?.let {
-                adapter.submitList(it)
-            }
-        })
+//        viewModel.mutableLivedata.observe(this, androidx.lifecycle.Observer {
+//            it?.let {
+//                adapter.submitList(it)
+//            }
+//        })
 
 
 
-        var db = FirebaseFirestore.getInstance()
+//        var db = FirebaseFirestore.getInstance()
+//
+//        val user: MutableMap<String, Any> = HashMap()
+//        user["first"] = "Alan"
+//        user["middle"] = "Mathison"
+//        user["last"] = "Turing"
+//        user["born"] = 1912
+//
+//        // Create a new user with a first, middle, and last name
+//        db.collection("users")
+//            .add(user)
+//            .addOnSuccessListener { documentReference ->
+//            Log.d("FragmentActivity", "DocumentSnapshot added with ID: " + documentReference.id) }
+//            .addOnFailureListener { e -> Log.w("FragmentActivity", "Error adding document", e) }
+//
+//        db.collection("users")
+//            .get()
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    for (document in task.result!!) {
+//                        Log.d("FragmentActivity", document.id + " => " + document.data)
+//                    }
+//                } else {
+//                    Log.w("FragmentActivity", "Error getting documents.", task.exception)
+//                }
+//            }
 
-        val user: MutableMap<String, Any> = HashMap()
-        user["first"] = "Alan"
-        user["middle"] = "Mathison"
-        user["last"] = "Turing"
-        user["born"] = 1912
+//        viewModel.dataReturn.observe(this, androidx.lifecycle.Observer {
+//            it?.let {
+//                addData()
+//                viewModel.readData()
+//            }
+//        })
 
-        // Create a new user with a first, middle, and last name
-        db.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-            Log.d("FragmentActivity", "DocumentSnapshot added with ID: " + documentReference.id) }
-            .addOnFailureListener { e -> Log.w("FragmentActivity", "Error adding document", e) }
-
-        db.collection("users")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    for (document in task.result!!) {
-                        Log.d("FragmentActivity", document.id + " => " + document.data)
-                    }
-                } else {
-                    Log.w("FragmentActivity", "Error getting documents.", task.exception)
-                }
-            }
-
-        viewModel.dataReturn.observe(this, androidx.lifecycle.Observer {
-            it?.let {
-                addData()
-                viewModel.readData()
-            }
-        })
-
-        add_article.setOnClickListener {
-            addData()
-        }
+//        floatingActionButton.setOnClickListener {
+//            Log.d("click","click")
+//            findNavController(R.id.nav_host_fragment).navigate(R.id.addFragment)
+//        }
 
 
     }

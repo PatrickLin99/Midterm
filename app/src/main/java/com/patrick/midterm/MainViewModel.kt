@@ -13,7 +13,6 @@ class MainViewModel() : ViewModel() {
 
     val dataReturn = MutableLiveData<String>()
 
-//    val dataResult = MutableLiveData<PersonItem>()
 
     val info = MutableLiveData<List<Info>>()
     val author = MutableLiveData<String>()
@@ -31,7 +30,6 @@ class MainViewModel() : ViewModel() {
 
     init {
         readData()
-//        readDataTest()
     }
 
     fun readData() {
@@ -65,32 +63,7 @@ class MainViewModel() : ViewModel() {
             }
     }
 
-//    fun readDataTest(){
-//
-//        db.collection("articles")
-//            .document("info")
-//            .get()
-//            .addOnSuccessListener { document ->
-//                try {
-//                    if (document != null) {
-//
-//                        document.toObject(InfoList::class.java) ?: InfoList()
-//
-//
-//                        Log.d("test","${InfoList()}")
-//
-//
-//                    } else {
-//
-//                    }
-//                }catch (ex: Exception){
-//                    Log.e(TAG, ex.message)
-//                }
-//            }.addOnFailureListener {
-//                    e -> Log.e(TAG, "Error writing document", e)
-//            }
-//
-//    }
+
 
 
 }
