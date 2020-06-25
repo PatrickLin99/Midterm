@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation"
     app:startDestination="@id/homeFragment">
-    <fragment
+    <dialog
         android:id="@+id/addFragment"
         android:name="com.patrick.midterm.add.AddFragment"
         android:label="AddFragment" /><action android:id="@+id/action_global_addFragment2" app:destination="@id/addFragment"/>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.patrick.midterm.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
     <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment" />
 </navigation>

@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.patrick.midterm.MainViewModel
 import com.patrick.midterm.databinding.FragmentAddArticleBinding
 
 class AddFragment : DialogFragment() {
@@ -22,6 +20,10 @@ class AddFragment : DialogFragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
+        binding.button.setOnClickListener {
+            viewModel.addData()
+        }
 
 
         return binding.root

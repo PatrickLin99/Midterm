@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
 
         binding.addArticle.setOnClickListener {
             Log.d("click","click")
-            findNavController().navigate(R.id.addFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_addFragment)
             addData()
         }
 
